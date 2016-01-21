@@ -1,9 +1,11 @@
 # rawls-db-testing
-Generate Rawls-like test data for DB comparison testing.
+Generate Rawls-like test data for DB comparison testing and use that test data to populate a MySQL DB using Slick.
   
-Generator Arguments: workspaceCount, levelCount, entitiesPerLevel, attributesPerEntity/Workspace  
+## Generator
+
+Arguments: outputJsonFile workspaceCount, levelCount, entitiesPerLevel, attributesPerEntity/Workspace  
   
-Example output `sbt "run generate json/simple-2.json 1 2 1 1"`:
+Example output for `sbt "run generate json/simple-2.json 1 2 1 1"`:
 ```
 [{
   "name": "WS1",
@@ -31,3 +33,7 @@ Example output `sbt "run generate json/simple-2.json 1 2 1 1"`:
   }]
 }]
 ```
+
+## Ingest
+          
+Argument: inputJsonFile

@@ -5,7 +5,6 @@ import java.util.UUID
 import org.broadinstitute.dsde.rawls.dbtest.json.{Workspace, Entity}
 
 case class Generator(levelCount: Int, entitiesPerLevel: Int, attributesPerEntity: Int) {
-
   def immediateChildren(parentName: String, candidates: Seq[Entity]): Map[String, String] = {
     // immediate children have the pattern PARENT_CHILDNUMBER
     val reg = (parentName + """_(\d+)""").r
