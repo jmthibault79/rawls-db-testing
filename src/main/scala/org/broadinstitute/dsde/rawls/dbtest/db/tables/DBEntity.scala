@@ -12,7 +12,7 @@ case class DBEntity (
 
 class EntityTable(tag: Tag) extends Table[DBEntity](tag, "ENTITY") {
   def id = column[Int]("ID", O.PrimaryKey, O.AutoInc)
-  def name = column[String]("NAME")
+  def name = column[String]("NAME", O.Length(254))
   def typeId = column[Int]("ENTITY_TYPE_ID")
   def workspaceId = column[Int]("WORKSPACE_ID")
 

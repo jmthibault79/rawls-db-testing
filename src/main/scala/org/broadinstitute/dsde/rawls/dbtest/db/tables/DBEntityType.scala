@@ -9,7 +9,7 @@ case class DBEntityType (
 
 class EntityTypeTable(tag: Tag) extends Table[DBEntityType](tag, "ENTITY_TYPE") {
   def id = column[Int]("ID", O.PrimaryKey, O.AutoInc)
-  def name = column[String]("NAME")
+  def name = column[String]("NAME", O.Length(254))
 
   override def * = (id, name) <>
     (DBEntityType.tupled, DBEntityType.unapply)
