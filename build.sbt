@@ -12,6 +12,7 @@ libraryDependencies ++= {
   Seq(
     "io.spray" %% "spray-json" % "1.3.1",
     "com.typesafe.slick" %% "slick" % slickV,
+    "com.typesafe.slick" %% "slick-hikaricp" % slickV,
 
     // Slick claims to need this, disables logging
     "org.slf4j" % "slf4j-nop" % "1.6.4",
