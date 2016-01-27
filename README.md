@@ -37,3 +37,9 @@ Example output for `sbt "run generate json/simple-2.json 1 2 1 1"`:
 ## Ingest
           
 Argument: inputJsonFile
+
+## Test
+          
+Argument: testName inputJsonFile
+
+Valid tests are `types` and `exp`

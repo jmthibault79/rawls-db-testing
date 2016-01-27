@@ -64,6 +64,20 @@ object SlickDAO {
     (entityTypeQuery returning entityTypeQuery.map(_.id)
       into ((entityType, id) => entityType.copy(id = id)))
 
+  // returns a specific entity when given name and type
+  def entityQueryByNameAndType(entityName: String, entityType: String) = for {
+    (et, e) <- entityTypeQuery join entityQuery on {
+      (et, e) => et.id === e.typeId && e.name === entityName && et.name === entityType
+    }
+  } yield e
+
+  // returns an entity referenced by a parent entity
+  def entityQueryByReference(parentEntity: Query[EntityTable, DBEntity, Seq], referenceName: String) = for {
+    ((e1, r), e2) <- parentEntity join referenceQuery join entityQuery on {
+      case ((e1, r), e2) => e1.id === r.parentId && e2.id === r.childId && r.name === referenceName
+    }
+  } yield e2
+
   // TODO: more idiomatic Slick to eliminate DB round-trips?
   def insertWorkspace(workspace: Workspace) = {
     val inserter = workspaceQueryWithId += AutoIncrementingWorkspace(workspace.name)
